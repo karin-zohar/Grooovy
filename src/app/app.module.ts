@@ -12,6 +12,7 @@ import { ContactDetailsPageComponent } from './pages/contact-details-page/contac
 import { ContactFilterComponent } from './cmps/contact-filter/contact-filter.component';
 import { ContactListComponent } from './cmps/contact-list/contact-list.component';
 import { ContactPreviewComponent } from './contact-preview/contact-preview.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ContactPreviewComponent } from './contact-preview/contact-preview.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
