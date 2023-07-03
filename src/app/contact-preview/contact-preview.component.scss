@@ -1,0 +1,21 @@
+@mixin profile-img($size) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background-color: rgb(135, 135, 135);
+    background-size: $size;
+    background-position: cover;
+    background-repeat: no-repeat;
+  }
+
+.contact-preview {
+    padding: 2em;
+    margin: 1em;
+    text-align: center;
+    border-radius: 4px;
+    border: 2px solid black;
+    .contact-img {
+        display: inline-block;
+        @include profile-img(140px);
+    }
+}

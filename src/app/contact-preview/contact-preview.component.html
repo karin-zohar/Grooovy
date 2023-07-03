@@ -1,1 +1,13 @@
-<p>contact-preview works!</p>
+<section class="contact-preview" *ngIf="contact">
+    <div class="contact-img" [style.background-image]="contact.imgUrl"></div>
+    <div class="contact-details">
+        <p class="name">{{contact.name}}</p>
+        <p class="email">{{contact.email}}</p>
+        <p class="phone">{{contact.phone}}</p>
+    </div>
+    <div class="actions">
+        <button>delete</button>
+        <button>gaga</button>
+        <button>gugu</button>
+    </div>
+</section>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
@@ -6,13 +8,20 @@ import { ContactService } from 'src/app/services/contact.service';
   templateUrl: './contact-page.component.html',
   styleUrls: ['./contact-page.component.scss']
 })
-export class ContactPageComponent implements OnInit {
+export class ContactPageComponent implements OnInit, OnDestroy {
 
   constructor(private contactService: ContactService) {}
-  
+  contacts: Contact[] | null = null
+  subscription!: Subscription
+
   ngOnInit(): void {
-    this.contactService.contacts$.subscribe(contacts => {
+    this.subscription = this.contactService.contacts$.subscribe(contacts => {
       console.log('contacts: ', contacts)
+      this.contacts = contacts
     })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 }
