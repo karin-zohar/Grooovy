@@ -1,1 +1,14 @@
-<p>contact-details-page works!</p>
+<section class="contact-details" *ngIf="contact">
+    <h2>yooooo </h2>
+    <div class="contact-img" [style.background-image]="contact.imgUrl"></div>
+    <div class="contact-details">
+        <p class="name">{{contact.name}}</p>
+        <p class="email">{{contact.email}}</p>
+        <p class="phone">{{contact.phone}}</p>
+    </div>
+    <div class="actions">
+        <button (click)="onBack()" class="back-btn">Back</button>
+        <button>gaga</button>
+        <button>gugu</button>
+    </div>
+</section>
