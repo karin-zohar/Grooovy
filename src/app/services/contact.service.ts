@@ -3,6 +3,7 @@ import { Observable, BehaviorSubject, throwError, from, tap, retry, catchError }
 import { storageService } from './async-storage.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Contact } from '../models/contact.model'
+import { ContactFilter } from '../models/contact.filter';
 
 const ENTITY = 'contacts'
 
@@ -14,6 +15,10 @@ export class ContactService {
     private _contacts$ = new BehaviorSubject<Contact[]>([])
     public contacts$ = this._contacts$.asObservable()
 
+    private _contactFilter$ = new BehaviorSubject<ContactFilter>({ term: '' })
+    public contactFilter$ = this._contactFilter$.asObservable()
+
+
     constructor() {
         // Handling Demo Data, fetching from storage || saving to storage 
         const contacts = JSON.parse(localStorage.getItem(ENTITY) || 'null')
@@ -22,13 +27,18 @@ export class ContactService {
         }
     }
 
+    public setContactFilter(contactFilter: ContactFilter) {
+        this._contactFilter$.next(contactFilter)
+        this.loadContacts().subscribe()
+    }
+
     public loadContacts() {
         return from(storageService.query(ENTITY))
             .pipe(
                 tap(contacts => {
-                    const filterBy = { term: '' }
-                    if (filterBy && filterBy.term) {
-                        contacts = this._filter(contacts, filterBy.term)
+                    const contactFilter = this._contactFilter$.value
+                    if (contactFilter && contactFilter.term) {
+                        contacts = this._filter(contacts, contactFilter.term)
                     }
                     this._contacts$.next(this._sort(contacts))
                 }),
@@ -126,6 +136,20 @@ export class ContactService {
                 "gender": "female"
             },
             {
+                "_id": "5a56640269f443a5d46b32ca",
+                "name": "Ariel Wolf",
+                "email": "arielwolf@renovize.com",
+                "phone": "+1 (968) 567-3844",
+                "gender": "female"
+            },
+            {
+                "_id": "5a56540269f443a5d46b32ca",
+                "name": "Bianca Lawson",
+                "email": "biancalawson@renovize.com",
+                "phone": "+1 (968) 574-3254",
+                "gender": "female"
+            },
+            {
                 "_id": "5a5664025f6ae9aa24a99fde",
                 "name": "Hallie Mclean",
                 "email": "halliemclean@renovize.com",
@@ -154,10 +178,24 @@ export class ContactService {
                 "gender": "male"
             },
             {
+                "_id": "5a566402kjde24c6bfe4699d",
+                "name": "Richard Clayton",
+                "email": "richclayton@renovize.com",
+                "phone": "+1 (807) 651-3228",
+                "gender": "male"
+            },
+            {
                 "_id": "5a566402a6499c1d4da9220a",
                 "name": "Shana Pope",
                 "email": "shanapope@renovize.com",
                 "phone": "+1 (970) 527-3082",
+                "gender": "female"
+            },
+            {
+                "_id": "5a565322a6499c1d4da9220a",
+                "name": "Anita Chang",
+                "email": "anitachang@renovize.com",
+                "phone": "+1 (970) 521-6582",
                 "gender": "female"
             },
             {
@@ -203,18 +241,18 @@ export class ContactService {
                 "gender": "male"
             },
             {
-                "_id": "5a5664026c53582bb9ebe9d1",
-                "name": "Nguyen Walls",
-                "email": "nguyenwalls@renovize.com",
-                "phone": "+1 (963) 471-3181",
-                "gender": "male"
-            },
-            {
                 "_id": "5a56640298ab77236845b82b",
                 "name": "Glenna Santana",
                 "email": "glennasantana@renovize.com",
                 "phone": "+1 (860) 467-2376",
                 "gender": "female"
+            },
+            {
+                "_id": "5a5664026c53582bb9ebe9d1",
+                "name": "Nguyen Walls",
+                "email": "nguyenwalls@renovize.com",
+                "phone": "+1 (963) 471-3181",
+                "gender": "male"
             },
             {
                 "_id": "5a56640208fba3e8ecb97305",
@@ -235,6 +273,13 @@ export class ContactService {
                 "name": "Grace James",
                 "email": "gracejames@renovize.com",
                 "phone": "+1 (959) 525-2529",
+                "gender": "female"
+            },
+            {
+                "_id": "5a56640298560fljdd8cb1ee5",
+                "name": "Zoe Easton",
+                "email": "zoeeaston@renovize.com",
+                "phone": "+1 (959) 425-2879",
                 "gender": "female"
             },
             {
