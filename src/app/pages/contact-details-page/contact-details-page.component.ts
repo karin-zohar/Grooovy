@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription, map, switchMap } from 'rxjs';
+import { Observable, Subscription, map, switchMap, tap } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
 
@@ -15,7 +15,7 @@ export class ContactDetailsPageComponent implements OnInit, OnDestroy {
   constructor(
     private contactService: ContactService,
     private route: ActivatedRoute,
-    private location: Location,
+    // private location: Location,
     private router: Router
   ) { }
 
@@ -26,9 +26,11 @@ export class ContactDetailsPageComponent implements OnInit, OnDestroy {
   contact!: Contact
 
   ngOnInit(): void {
-    this.contact$ = this.route.params.pipe(
-      switchMap(params => this.contactService.getContactById(params['id']))
-    )
+    console.log('on init')
+    this.contact$ = this.route.data.pipe(map(data => data['contact']))
+    // this.contact$ = this.route.params.pipe(
+    //   switchMap(params => this.contactService.getContactById(params['id']))
+    // )
   }
 
   onBack() {

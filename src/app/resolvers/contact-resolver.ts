@@ -6,6 +6,8 @@ import { delay } from "rxjs";
 
 export function contactResolver(route: ActivatedRouteSnapshot) {
     const id = route.params['id']
-    return inject(ContactService).getContactById(id).pipe(delay(100))
+    const x = inject(ContactService).getContactById(id).pipe(delay(100))
+    console.log('x: ', x)
+    return x
 }
 
