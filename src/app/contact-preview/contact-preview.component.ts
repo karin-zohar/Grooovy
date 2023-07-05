@@ -10,15 +10,7 @@ export class ContactPreviewComponent {
   @Input() contact!: Contact | null
 
 
-
   onRemoveContact(ev: MouseEvent) {
 
   }
-
-  onPreview(ev: MouseEvent) {
-    console.log('preview has been clicked')
-    console.log('this.contact._id: ', this.contact?._id)
-  }
-
-
 }

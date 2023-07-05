@@ -1,12 +1,14 @@
-@mixin profile-img($size) {
-    width: $size;
-    height: $size;
-    border-radius: 50%;
-    background-color: rgb(135, 135, 135);
-    background-size: $size;
-    background-position: cover;
-    background-repeat: no-repeat;
-}
+@import "../../styles.scss";
+
+// @mixin profile-img($size) {
+//     width: $size;
+//     height: $size;
+//     border-radius: 50%;
+//     background-color: rgb(135, 135, 135);
+//     background-size: $size;
+//     background-position: cover;
+//     background-repeat: no-repeat;
+// }
 
 .contact-preview {
     padding: 2em;

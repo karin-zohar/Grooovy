@@ -1,9 +1,7 @@
 <section class="contact-details" *ngIf="contact$ | async as contact">
-<!-- <section class="contact-details"> -->
 
-    <h2>details </h2>
-    <div class="contact-img" [style.background-image]="contact.imgUrl"></div>
-    <div class="contact-details">
+    <div class="contact-img" style.background-image="url('{{contact.imgUrl}}')"></div>
+    <div class="contact-data">
         <p class="name">{{contact.name}}</p>
         <p class="email">{{contact.email}}</p>
         <p class="phone">{{contact.phone}}</p>

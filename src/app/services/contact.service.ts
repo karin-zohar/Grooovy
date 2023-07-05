@@ -299,7 +299,7 @@ export class ContactService {
         ]
 
         contacts.forEach((contact, idx) => {
-            contact.imgUrl = `url(http://xsgames.co/randomusers/assets/avatars/${contact.gender}/${idx}.jpg)`
+            contact.imgUrl = `http://xsgames.co/randomusers/assets/avatars/${contact.gender}/${idx}.jpg`
         })
         
         return contacts

@@ -14,6 +14,7 @@ import { ContactListComponent } from './cmps/contact-list/contact-list.component
 import { ContactPreviewComponent } from './contact-preview/contact-preview.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BgImagePipe } from './pipes/bg-image.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContactDetailsPageComponent,
     ContactFilterComponent,
     ContactListComponent,
-    ContactPreviewComponent
+    ContactPreviewComponent,
+    BgImagePipe
   ],
   imports: [
     BrowserModule,

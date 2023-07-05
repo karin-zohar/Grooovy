@@ -1,0 +1,15 @@
+@import '../../../styles.scss';
+
+.contact-details {
+    margin: auto;
+    padding: 2em;
+    margin: 1em;
+    text-align: center;
+    border-radius: 4px;
+    max-width: 290px;
+    border: 2px solid black;
+    .contact-img {
+        display: inline-block;
+        @include profile-img(220px);
+    }
+}
