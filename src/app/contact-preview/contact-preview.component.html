@@ -1,13 +1,9 @@
-<section class="contact-preview" *ngIf="contact">
+<section class="contact-preview" *ngIf="contact" (click)="onPreview($event)">
     <div class="contact-img" [style.background-image]="contact.imgUrl"></div>
-    <div class="contact-details">
+    <a  routerLink="/contact/{{contact._id}}" class="contact-details">
         <p class="name">{{contact.name}}</p>
         <p class="email">{{contact.email}}</p>
         <p class="phone">{{contact.phone}}</p>
-    </div>
-    <div class="actions">
-        <button>delete</button>
-        <button>gaga</button>
-        <button>gugu</button>
-    </div>
+    </a>
+
 </section>

@@ -15,5 +15,10 @@ export class ContactPreviewComponent {
 
   }
 
+  onPreview(ev: MouseEvent) {
+    console.log('preview has been clicked')
+    console.log('this.contact._id: ', this.contact?._id)
+  }
+
 
 }

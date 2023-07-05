@@ -8,3 +8,4 @@ export function contactResolver(route: ActivatedRouteSnapshot) {
     const id = route.params['id']
     return inject(ContactService).getContactById(id).pipe(delay(100))
 }
+
