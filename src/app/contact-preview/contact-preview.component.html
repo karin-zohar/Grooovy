@@ -1,7 +1,7 @@
 <section class="contact-preview" *ngIf="contact" (click)="onPreview($event)">
     <div class="contact-img" [style.background-image]="contact.imgUrl"></div>
     <a  routerLink="/contact/{{contact._id}}" class="contact-details">
-        <p class="name">{{contact.name}}</p>
+        <p class="name">{{contact.name}}!</p>
         <p class="email">{{contact.email}}</p>
         <p class="phone">{{contact.phone}}</p>
     </a>
